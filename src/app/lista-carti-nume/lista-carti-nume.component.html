@@ -1,0 +1,44 @@
+<div class = "col-md-6 offset-md-3">
+
+    <h3>Numele cartii cautate:</h3>
+    <form (ngSubmit)="onSubmit()">
+        <div class= "form-group">
+            <input type="text" class="form-control" id="pret"
+                [(ngModel)]="nume" name="pret">
+        </div>
+        <div class="text-center">
+            <button class=" btn btn-success" type="submit">Submit</button>
+        </div>
+    </form>
+    </div>
+
+<h2>Lista de carti</h2>
+<table class = "table table-striped">
+    <thead>
+        <tr>
+                <th>Nume</th>
+                <th>Autor</th>
+                <th>Pret(lei)</th>
+                <th>Stare(1-10)</th>
+                <th>Numar pagini</th>
+                <th>Id</th>
+                <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let carte of listaCarti">
+            <td>{{carte.name}}</td>
+            <td>{{carte.autor}}</td>
+            <td>{{carte.pret}}</td>
+            <td>{{carte.stare}}</td>
+            <td>{{carte.nrPag}}</td>
+            <td>{{carte.id}}</td>
+            <td>
+                <button (click)="updateCarte(carte.id)" class="btn btn-info">Update</button>
+                <button (click)="deleteCarte(carte.id)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+                <button (click)="carteDetails(carte.id)" class="btn btn-info" style="margin-left: 10px">View</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+

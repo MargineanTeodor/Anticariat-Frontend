@@ -31,4 +31,12 @@ export class CartiService {
   {
     return this.httpClient.delete(`${this.baseURL}/delete/${id}`);
   }
+  getCarteLitByName(string:String):Observable<Carti[]>
+  {
+    return this.httpClient.get<Carti[]>(`${this.baseURL}/allNume${string}`);
+  }
+  getCarteListByAutor(string:String):Observable<Carti[]>
+  {
+    return this.httpClient.get<Carti[]>(`${this.baseURL}/allAutor${string}`);
+  }
 }
