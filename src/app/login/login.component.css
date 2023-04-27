@@ -1,0 +1,8 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+#navigation {
+    width: 100%;
+    height: auto;
+    background-color: orange;
+    position: absolute;
+    top: 0px;
+    }

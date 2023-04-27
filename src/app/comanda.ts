@@ -5,6 +5,4 @@ export class Comanda {
     id!: number;
     pret!: number;
     platita!: boolean;
-    user!: User;
-    listaCarti!: Carti[];
 }

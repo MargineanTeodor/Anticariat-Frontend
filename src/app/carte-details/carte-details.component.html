@@ -1,5 +1,6 @@
-<h3>View Carte Details</h3>
-<div>
+<h1 class = "text-center">Anticariat </h1>
+<div class= "text-center">
+    <h3>View Carte Details</h3>
     <div>
         <label>
             <b>Nume:</b>
@@ -24,5 +25,13 @@
         <label>
             <b>Pret:</b>
         </label> {{carte.pret}}
+    </div>
+    <div>
+        <label>
+            <b></b>
+        </label>
+        <form (ngSubmit)="onSubmit()">
+            <button class=" btn btn-success" type="submit">Buy</button>
+        </form>
     </div>
 </div>

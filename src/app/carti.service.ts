@@ -15,9 +15,8 @@ export class CartiService {
   {
     return this.httpClient.get<Carti[]>(`${this.baseURL}/all`);
   }
-  createCarte(carte:Carti, string: string):Observable<Object>{
-    this.baseURL2+=string;
-    return this.httpClient.post(`${this.baseURL2}`,carte);
+  createCarte(carte:Carti, string: String):Observable<Object>{
+    return this.httpClient.post(`${this.baseURL2}${string}`,carte);
 
   }
   updateCarte(carte:Carti,id:number):Observable<Object>{

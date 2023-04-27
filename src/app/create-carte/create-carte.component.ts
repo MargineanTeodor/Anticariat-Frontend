@@ -10,11 +10,11 @@ import { Route, Router } from '@angular/router';
 })
 export class CreateCarteComponent implements OnInit {
   carte: Carti = new Carti();
-  string: string= "";
+  string: String= new String();
   constructor( private carteService: CartiService,
     private router: Router){}
   ngOnInit(): void{
-
+    this.string="";
     this.carte.user=1;
   }
   saveCarte()
@@ -30,6 +30,7 @@ export class CreateCarteComponent implements OnInit {
   }
   onSubmit(){
     console.log(this.carte);
+    this.string="";
     this.string="?userId="+this.carte.user+"&nume="+this.carte.name+"&pret="+this.carte.pret+"&nrPag="+this.carte.nrPag+"&stare="+this.carte.stare+"&autor="+this.carte.autor;
     console.log(this.string);
     this.saveCarte();

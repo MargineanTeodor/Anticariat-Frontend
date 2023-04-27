@@ -1,1 +1,20 @@
-<p>admin-page works!</p>
+<h2>Lista de comenzi</h2>
+<table class = "table table-striped">
+    <thead>
+        <tr>
+                <th>Id</th>
+                <th>Pret</th>
+                <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let comanda of listaComenzi">
+            <td>{{comanda.id}}</td>
+            <td>{{comanda.pret}}</td>
+            <td>{{comanda.platita}}</td>
+            <td>
+                <button (click)="updatePlata(comanda.id,comanda)" class="btn btn-info">Update</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
