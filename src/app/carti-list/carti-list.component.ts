@@ -36,4 +36,8 @@ export class CartiListComponent implements OnInit{
   {
     this.router.navigate(['carte-details', id]);
   }
+  onLogout()
+  {
+    this.router.navigate(['login']);
+  }
 }

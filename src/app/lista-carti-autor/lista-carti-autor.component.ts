@@ -39,5 +39,9 @@ export class ListaCartiAutorComponent implements OnInit {
   onSubmit(){
     this.getCartiNume();
   }
+  onLogout()
+  {
+    this.router.navigate(['login']);
+  }
 
 }

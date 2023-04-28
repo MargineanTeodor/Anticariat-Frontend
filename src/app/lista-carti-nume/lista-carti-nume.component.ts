@@ -38,4 +38,8 @@ export class ListaCartiNumeComponent implements OnInit {
   onSubmit(){
     this.getCartiNume();
   }
+  onLogout()
+  {
+    this.router.navigate(['login']);
+  }
 }
