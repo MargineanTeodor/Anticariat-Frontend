@@ -8,7 +8,6 @@ import { User } from './user';
 })
 export class LoginServiceService {
   private baseURL = 'http://localhost:8082/user'
-
   constructor(private httpClient: HttpClient) {
 
    }
@@ -23,6 +22,26 @@ export class LoginServiceService {
     register(string:String,user:User):Observable<Object>
     {
       return this.httpClient.put<Boolean>(`${this.baseURL}/adduser${string}`,user)
+    }
+    login2(id:number,user:User):Observable<Object>
+    {
+      return this.httpClient.put<Boolean>(`${this.baseURL}/logged?id=${id}`,user)
+    }
+    logout(id:number,user:User):Observable<Object>
+    {
+      return this.httpClient.put<Boolean>(`${this.baseURL}/logout?id=${id}`,user)
+    }
+    getuserByid(id:number):Observable<User>
+    {
+      return this.httpClient.get<User>(`${this.baseURL}/firstId?id=${id}`)
+    }
+    logati():Observable<User[]>
+    {
+      return this.httpClient.get<User[]>(`${this.baseURL}/loggedusers`)
+    }
+    swapPassw(id:number,string:String,user:User):Observable<Object>
+    {
+      return this.httpClient.put<String>(`${this.baseURL}/swapPassw?id=${id}&passw=${string}`,user);
     }
 }
 

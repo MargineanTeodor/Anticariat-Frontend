@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Carti} from '../carti'
 import { CartiService } from '../carti.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LoginServiceService } from '../login-service.service';
+import { User } from '../user';
 @Component({
   selector: 'app-carti-list',
   templateUrl: './carti-list.component.html',
@@ -9,9 +11,16 @@ import { Router } from '@angular/router';
 })
 export class CartiListComponent implements OnInit{
   listaCarti: Carti[] | undefined;
+  id!: number;
+  user!: User;
+  string: String="";
   constructor(private cartiService: CartiService,
-    private router: Router){}
+    private userService : LoginServiceService,
+    private router: Router,
+    private route: ActivatedRoute){}
   ngOnInit(): void {
+    this.id=this.route.snapshot.params['id'];
+    this.getUser()
     this.getCarti();
   }
   private getCarti(){
@@ -20,9 +29,17 @@ export class CartiListComponent implements OnInit{
       this.listaCarti = data;
     });
   }
+  getUser()
+  {
+    this.string="?nume="+this.user.name;
+    const x= this.userService.getuserByid(this.id).subscribe(data=>{
+      this.user=data;
+    },
+    error=> console.log(error));
+  }
   updateCarte(id:number)
   {
-    this.router.navigate(['update-carte',id]);
+    this.router.navigate(['update-carte',id,this.id]);
   }
   deleteCarte(id:number)
   {
@@ -34,10 +51,19 @@ export class CartiListComponent implements OnInit{
   }
   carteDetails(id:number)
   {
-    this.router.navigate(['carte-details', id]);
+    this.router.navigate(['carte-details', id,this.id]);
   }
   onLogout()
   {
+    this.logout();
     this.router.navigate(['login']);
+  }
+  schimba_parola()
+  {
+    this.router.navigate(['schimbare-parola',this.id]);
+  }
+  logout()
+  {
+    this.userService.logout(this.id,this.user).subscribe(data =>{});
   }
 }

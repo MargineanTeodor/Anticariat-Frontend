@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Comanda } from '../comanda';
 import { ServiceComandaService } from '../service-comanda.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-page',
@@ -9,10 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-page.component.css']
 })
 export class AdminPageComponent implements OnInit{
+
   listaComenzi: Comanda[] | undefined;
+  id!:number;
   constructor(private comandaService: ServiceComandaService,
-    private router: Router){}
+    private router: Router,private route: ActivatedRoute){}
   ngOnInit(): void {
+    this.id=this.route.snapshot.params['id'];
     this.getlist();
   }
   updatePlata(id:number, comanda: Comanda)
@@ -26,4 +29,7 @@ export class AdminPageComponent implements OnInit{
       this.listaComenzi=data;
     })
   }
+  lista_useriLogati() {
+    this.router.navigate(['user-logati',this.id]);
+    } 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Carti } from '../carti';
 import { CartiService } from '../carti.service';
-import { Route, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-carte',
@@ -11,9 +11,11 @@ import { Route, Router } from '@angular/router';
 export class CreateCarteComponent implements OnInit {
   carte: Carti = new Carti();
   string: String= new String();
+  id !:number;
   constructor( private carteService: CartiService,
     private router: Router){}
   ngOnInit(): void{
+    this.id=1;
     this.string="";
     this.carte.user=1;
   }
@@ -26,7 +28,7 @@ export class CreateCarteComponent implements OnInit {
   }
   goToCarteList()
   {
-    this.router.navigate(['/carti']);
+    this.router.navigate(['/carti',this.id]);
   }
   onSubmit(){
     console.log(this.carte);

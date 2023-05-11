@@ -13,6 +13,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { RegisterComponent } from './register/register.component';
 import { ListaCartiNumeComponent } from './lista-carti-nume/lista-carti-nume.component';
 import { ListaCartiAutorComponent } from './lista-carti-autor/lista-carti-autor.component';
+import { SchimbareParolaComponent } from './schimbare-parola/schimbare-parola.component';
+import { UserLogatiComponent } from './user-logati/user-logati.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { ListaCartiAutorComponent } from './lista-carti-autor/lista-carti-autor.
     RegisterComponent,
     ListaCartiNumeComponent,
     ListaCartiAutorComponent,
+    SchimbareParolaComponent,
+    UserLogatiComponent,
   ],
   imports: [
     BrowserModule,

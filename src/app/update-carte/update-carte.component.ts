@@ -12,11 +12,13 @@ export class UpdateCarteComponent implements OnInit {
   carte: Carti = new Carti();
   string: string= "";
   id!: number;
+  id2!: number;
   constructor( private carteService: CartiService,
     private router: Router,
     private route: ActivatedRoute){}
   ngOnInit(): void{
     this.id=this.route.snapshot.params['id'];
+    this.id2= this.route.snapshot.params['id2'];
     this.carteService.getCarteById(this.id).subscribe(data=>
       {
         this.carte=data;
@@ -35,6 +37,6 @@ export class UpdateCarteComponent implements OnInit {
   }
   goToCarteList()
   {
-    this.router.navigate(['/carti']);
+    this.router.navigate(['/carti',this.id2]);
   }
 }

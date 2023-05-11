@@ -11,9 +11,10 @@ import { ServiceComandaService } from '../service-comanda.service';
   styleUrls: ['./carte-details.component.css']
 })
 export class CarteDetailsComponent implements OnInit {
-  id!: number
+  id!: number;
+  id2!: number;
   comanda:Comanda = new Comanda();
-  carte!: Carti
+  carte!: Carti;
   string :String = new String();
   constructor( private route: ActivatedRoute,
     private carteService: CartiService,
@@ -21,6 +22,7 @@ export class CarteDetailsComponent implements OnInit {
     private router: Router){}
   ngOnInit(): void{
     this.id = this.route.snapshot.params['id'];
+    this.id2= this.route.snapshot.params['id2'];
     this.carte= new Carti();
     this.carteService.getCarteById(this.id).subscribe(data =>
       {
@@ -36,7 +38,7 @@ export class CarteDetailsComponent implements OnInit {
   }
   goToCarteList()
   {
-    this.router.navigate(['carti']);
+    this.router.navigate(['carti',this.id2]);
   }
   createComanda()
   {

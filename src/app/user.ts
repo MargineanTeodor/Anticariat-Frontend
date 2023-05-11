@@ -6,6 +6,7 @@ export class User {
     name!: string;
     passw!: string;
     admin!: boolean;
+    logat!:boolean;
     listaCarte!: Carti[];
     listaComenzi!: Comanda[];
 }
