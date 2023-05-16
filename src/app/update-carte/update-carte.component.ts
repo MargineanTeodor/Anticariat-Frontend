@@ -13,6 +13,7 @@ export class UpdateCarteComponent implements OnInit {
   string: string= "";
   id!: number;
   id2!: number;
+  labelContent!: string;
   constructor( private carteService: CartiService,
     private router: Router,
     private route: ActivatedRoute){}
@@ -32,11 +33,20 @@ export class UpdateCarteComponent implements OnInit {
     error => console.log(error));
   }
   onSubmit(){
-    this.updateCarte();
-    this.goToCarteList();
+    if(this.carte.pret>10)
+    {
+      this.updateCarte();
+      this.goToCarteList();
+    }
+    else
+      this.updateLabel();
   }
   goToCarteList()
   {
     this.router.navigate(['/carti',this.id2]);
+  }
+  updateLabel()
+  {
+    this.labelContent="Pretul MINIM este de 10 lei";
   }
 }

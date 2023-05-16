@@ -34,4 +34,28 @@
             <button class=" btn btn-success" type="submit">Buy</button>
         </form>
     </div>
+    <h2>Reviews
+    </h2>
+    <form (ngSubmit)="onSubmit2()">
+        <div class= "form-group">
+            <input type="text" class="form-control" id="pret"
+                [(ngModel)]="review.review" name="Parola">
+        </div>
+        <button class=" btn btn-success" type="submit">Add review</button>
+    </form>
+    <table class = "table table-striped">
+        <thead>
+            <tr>
+                    <th>Reviews</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let review of listaReview">
+                <td>{{review.review}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
 </div>

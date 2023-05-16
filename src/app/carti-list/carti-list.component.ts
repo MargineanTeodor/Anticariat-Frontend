@@ -12,7 +12,7 @@ import { User } from '../user';
 export class CartiListComponent implements OnInit{
   listaCarti: Carti[] | undefined;
   id!: number;
-  user!: User;
+  user: User= new User;
   string: String="";
   constructor(private cartiService: CartiService,
     private userService : LoginServiceService,
@@ -20,7 +20,7 @@ export class CartiListComponent implements OnInit{
     private route: ActivatedRoute){}
   ngOnInit(): void {
     this.id=this.route.snapshot.params['id'];
-    this.getUser()
+    this.getUser();
     this.getCarti();
   }
   private getCarti(){
@@ -34,6 +34,7 @@ export class CartiListComponent implements OnInit{
     this.string="?nume="+this.user.name;
     const x= this.userService.getuserByid(this.id).subscribe(data=>{
       this.user=data;
+      console.log(this.user);
     },
     error=> console.log(error));
   }
